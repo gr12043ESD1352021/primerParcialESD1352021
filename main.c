@@ -1,24 +1,28 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   main.c
- * Author: chaic
- *
- * Created on 3 de septiembre de 2021, 14:46
- */
 
 #include <stdio.h>
 #include <stdlib.h>
 
-/*
- * 
- */
 int main(int argc, char** argv) {
-
-    return (EXIT_SUCCESS);
+    // Creamos un obejto para poder abrir archivo de texto
+    FILE *Datos  = fopen("PeliculasFavoritasGR12043ESD135.txt", "rb");
+    //Validamos ejecucion de lectura de archivo.
+    if(Datos == NULL){
+        perror("Error al abrir archivo."); 
+        return 1;
+                        
+    }
+    char caracter;
+    while(feof(Datos)==0){
+         caracter = fgetc(Datos);
+         printf("%c", caracter);
+         }
+    fclose(Datos);
+ 
+    printf("\n\nSe ha leido el archivo.");
+    
+    printf("largo %d anchod", Datos->_lbfsize);
+    
+    
+    
+    return 0;
 }
-
