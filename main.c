@@ -2,8 +2,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
-
 int main(int argc, char** argv) {
     // Creamos un obejto para poder abrir archivo de texto
     FILE *Datos  = fopen("peliculasFavoritasESD135_2021.csv", "rb");
@@ -22,7 +20,6 @@ int main(int argc, char** argv) {
  
     printf("\n\nSe ha leido el archivo.");
     
-    printf("largo %d anchod");
     
     
     
