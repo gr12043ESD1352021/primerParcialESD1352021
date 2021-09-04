@@ -2,10 +2,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-struct Pelicua{
-    char Carnet[6];
+ struct Pelicua{
+    //char Carnet[6];
     int TheGodfather, TokyoDrift, SpiritedAway, Tenet, TheGrandBudapestHotel, Frozen;
-}Peliculas[6][58], *puntero;
+}Peliculas[6][58];
 
 int main(int argc, char** argv) {
     // Creamos un obejto para poder abrir archivo de texto
@@ -26,11 +26,8 @@ int main(int argc, char** argv) {
          if (coma > 1) {
             while (token != NULL) {
                    switch (ancho){
-                   case 0:
-                        strcpy(Peliculas[ancho][largo].Carnet, token);
-                        printf("guardo exitoso el valor %s", Peliculas[ancho][largo].Carnet);
-                        break;
-                    case 1:
+                       
+                       case 1:
                         aux =  strtol(token, NULL, 10);
                         Peliculas[ancho][largo].TheGodfather = aux;
                         printf("guardo exitoso el valor %i", Peliculas[ancho][largo].TheGodfather);
