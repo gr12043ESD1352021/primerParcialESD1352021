@@ -21,6 +21,7 @@ int main(int argc, char** argv) {
          printf("%s", token);
          token =strtok(NULL, "\n");
         }
+        
         printf("\n");
     }
     fclose(Datos);
