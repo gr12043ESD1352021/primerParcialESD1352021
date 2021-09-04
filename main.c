@@ -28,11 +28,6 @@ int main(int argc, char** argv) {
  
     printf("\n\nSe ha leido el archivo.");
     
-    //esta
-    // es nueva
-    //admi
-    
-    /*holaaa*/
     printf("hola mundo");
     return 0;
 }
