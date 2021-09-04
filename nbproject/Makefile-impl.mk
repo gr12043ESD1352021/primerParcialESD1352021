@@ -24,7 +24,7 @@ CLEAN_SUBPROJECTS=${CLEAN_SUBPROJECTS_${SUBPROJECTS}}
 
 
 # Project Name
-PROJECTNAME=ParcialUnoEstructura
+PROJECTNAME=primerParcialESD1352021
 
 # Active Configuration
 DEFAULTCONF=Debug

@@ -9,19 +9,19 @@ CND_DISTDIR=dist
 # Debug configuration
 CND_PLATFORM_Debug=Cygwin-Windows
 CND_ARTIFACT_DIR_Debug=dist/Debug/Cygwin-Windows
-CND_ARTIFACT_NAME_Debug=parcialunoestructura
-CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/parcialunoestructura
+CND_ARTIFACT_NAME_Debug=primerparcialesd1352021
+CND_ARTIFACT_PATH_Debug=dist/Debug/Cygwin-Windows/primerparcialesd1352021
 CND_PACKAGE_DIR_Debug=dist/Debug/Cygwin-Windows/package
-CND_PACKAGE_NAME_Debug=parcialunoestructura.tar
-CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/parcialunoestructura.tar
+CND_PACKAGE_NAME_Debug=primerparcialesd1352021.tar
+CND_PACKAGE_PATH_Debug=dist/Debug/Cygwin-Windows/package/primerparcialesd1352021.tar
 # Release configuration
 CND_PLATFORM_Release=Cygwin-Windows
 CND_ARTIFACT_DIR_Release=dist/Release/Cygwin-Windows
-CND_ARTIFACT_NAME_Release=parcialunoestructura
-CND_ARTIFACT_PATH_Release=dist/Release/Cygwin-Windows/parcialunoestructura
+CND_ARTIFACT_NAME_Release=primerparcialesd1352021
+CND_ARTIFACT_PATH_Release=dist/Release/Cygwin-Windows/primerparcialesd1352021
 CND_PACKAGE_DIR_Release=dist/Release/Cygwin-Windows/package
-CND_PACKAGE_NAME_Release=parcialunoestructura.tar
-CND_PACKAGE_PATH_Release=dist/Release/Cygwin-Windows/package/parcialunoestructura.tar
+CND_PACKAGE_NAME_Release=primerparcialesd1352021.tar
+CND_PACKAGE_PATH_Release=dist/Release/Cygwin-Windows/package/primerparcialesd1352021.tar
 #
 # include compiler specific variables
 #
