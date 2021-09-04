@@ -29,6 +29,7 @@ int main(int argc, char** argv) {
     printf("\n\nSe ha leido el archivo.");
     
     //hioa
+    printf("vale verga la vida con esta onda");
     
     
     return 0;
