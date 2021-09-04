@@ -28,7 +28,7 @@ int main(int argc, char** argv) {
  
     printf("\n\nSe ha leido el archivo.");
     
-    
+    //hioa
     
     
     return 0;
