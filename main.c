@@ -3,9 +3,10 @@
 #include <stdlib.h>
 #include <string.h>
  struct Pelicua{
-    //char Carnet[6];
+     
     int TheGodfather, TokyoDrift, SpiritedAway, Tenet, TheGrandBudapestHotel, Frozen;
-}Peliculas[6][58];
+    
+}Peliculas[5][58];
 
 int main(int argc, char** argv) {
     // Creamos un obejto para poder abrir archivo de texto
@@ -72,7 +73,7 @@ int main(int argc, char** argv) {
             token = strtok(NULL, ",");
         }
         coma++;
-        if(ancho>=6){
+        if(ancho>=5){
             largo++;
             ancho=0;
         }
