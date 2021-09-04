@@ -13,16 +13,20 @@ int main(int argc, char** argv) {
         return 1;
         
     }
-    char caracter[200];
+    int ancho=0, largo;
+    char caracter[20];
     while(fgets(caracter, sizeof(caracter), Datos)){
         char *token;
-        token = strtok(caracter, "\n");
+        token = strtok(caracter, ",");
+        if(ancho >3){
         while(token!=NULL){
          printf("%s", token);
-         token =strtok(NULL, "\n");
+         token =strtok(NULL, ",");
         }
-        
         printf("\n");
+        } else{ token =strtok(NULL, ","); }
+        
+        ancho++;
     }
     fclose(Datos);
  
