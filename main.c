@@ -30,14 +30,16 @@ int main(int argc, char** argv) {
                 if (coma == 2 && ancho == 2) {
                     token = strtok(NULL, ",");
                 }
-                if (ancho >= 1) {
+                if (ancho >=1) {
+                    if(ancho==1){ancho=0;}
                     aux = strtol(token, NULL, 10);
                     Peliculas.Matriz[ancho][largo] = aux;
                     Peliculas.MatrizInversa[largo][ancho] = aux;
-                            printf("%d ", Peliculas.Matriz[ancho][largo]);
+                    
+                    printf("%d %d", Peliculas.Matriz[ancho][largo],(ancho));
 
                     printf("\t");
-                }
+                } 
                 ancho++;
                 token = strtok(NULL, ",");
             }
@@ -47,7 +49,7 @@ int main(int argc, char** argv) {
             ancho++;
         }
         coma++;
-        if (ancho >= 5) {
+        if (ancho > 5) {
             largo++;
             ancho = 0;
         }
@@ -55,13 +57,15 @@ int main(int argc, char** argv) {
     }
     fclose(Datos);
 
-    printf("\n\nSe ha leido el archivo.");
+    printf("\n\nSe ha leido el archivo.\n");
+    LlenandoMultiplicacionDeMatrices();
     return 0;
+    
 }
 
 
 void LlenandoMultiplicacionDeMatrices(){
-    int aux=0;
+    
     for(int largo=0;largo<=58;largo++){
         for(int ancho=58;ancho<=58;ancho++){
             Peliculas.MultiploDeMatrices[ancho][largo]=0;
@@ -70,9 +74,11 @@ void LlenandoMultiplicacionDeMatrices(){
     for (int largoMult=0; largoMult<=58; largoMult++){
         for (int largo=0; largo<=58; largo++){
             for (int ancho=0; ancho<=5; ancho++){
-                //aux = aux+(Peliculas[ancho][largo].TheGodfather);
+                Peliculas.MultiploDeMatrices[largoMult][largo] +=Peliculas.Matriz[ancho][largoMult]*Peliculas.MatrizInversa[largo][ancho];
             }
+            printf("%d ", Peliculas.MultiploDeMatrices[largoMult][largo]);
         }
+        printf("\n");
     }
     
 }
