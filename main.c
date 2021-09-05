@@ -30,13 +30,13 @@ int main(int argc, char** argv) {
                 if (coma == 2 && ancho == 2) {
                     token = strtok(NULL, ",");
                 }
-                if (ancho >=1) {
-                    if(ancho==1){ancho=0;}
+                if (ancho >= 1) {
+                    if(ancho==1&&coma==2){ancho=0;}
                     aux = strtol(token, NULL, 10);
-                    Peliculas.Matriz[ancho][largo] = aux;
-                    Peliculas.MatrizInversa[largo][ancho] = aux;
+                    Peliculas.Matriz[ancho-1][largo] = aux;
+                    Peliculas.MatrizInversa[largo][ancho-1] = aux;
                     
-                    printf("%d %d", Peliculas.Matriz[ancho][largo],(ancho));
+                    printf("%d %d", Peliculas.Matriz[ancho-1][largo],(ancho-1));
 
                     printf("\t");
                 } 
