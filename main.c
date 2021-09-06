@@ -24,8 +24,13 @@ int main(int argc, char** argv) {
             Peliculas.Matriz[ancho][largo] = 0;
         }
     }
+    for (int largo = 0; largo <= 58; largo++) {
+        for (int ancho = 0; ancho <= 58; ancho++) {
+            Peliculas.MultiploDeMatrices[largo][ancho]=0;
+        }
+    }
     int coma = 0, largo = 0, ancho = 0, aux;
-    char caracter[59];
+    char caracter[60];
     char *token;
     while (fgets(caracter, sizeof (caracter), Datos)) {
 
