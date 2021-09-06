@@ -18,6 +18,12 @@ int main(int argc, char** argv) {
         return 1;
 
     }
+    for (int largo = 0; largo <= 58; largo++) {
+        for (int ancho = 0; ancho <= 5; ancho++) {
+            Peliculas.MatrizInversa[largo][ancho] = 0;
+            Peliculas.Matriz[ancho][largo] = 0;
+        }
+    }
     int coma = 0, largo = 0, ancho = 0, aux;
     char caracter[59];
     char *token;
@@ -27,58 +33,47 @@ int main(int argc, char** argv) {
 
         if (coma > 1) {
             while (token != NULL) {
-                if (coma == 2 && ancho == 2) {
+                if (ancho == 0) {
+                    token = strtok(NULL, ",");
+                } else if (ancho > 0) {
+                    aux = strtol(token, NULL, 10);
+                    if (aux != 0) {
+                        Peliculas.Matriz[ancho - 1][largo] = aux;
+                    } else {
+                        Peliculas.Matriz[ancho - 1][largo] = 0;
+                        Peliculas.MatrizInversa[largo][ancho - 1] = 0;
+                    }
                     token = strtok(NULL, ",");
                 }
-                if (ancho >= 1) {
-                    if(ancho==1&&coma==2){ancho=0;}
-                    aux = strtol(token, NULL, 10);
-                    Peliculas.Matriz[ancho-1][largo] = aux;
-                    Peliculas.MatrizInversa[largo][ancho-1] = aux;
-                    
-                    printf("%d %d", Peliculas.Matriz[ancho-1][largo],(ancho-1));
-
-                    printf("\t");
-                } 
                 ancho++;
-                token = strtok(NULL, ",");
             }
-            printf("\n");
-        } else {
+
+        } else if (coma <= 1) {
             token = strtok(NULL, ",");
-            ancho++;
         }
+
         coma++;
-        if (ancho > 5) {
+
+        if (coma > 1 && ancho >= 6) {
             largo++;
             ancho = 0;
         }
-
     }
-    fclose(Datos);
-
-    printf("\n\nSe ha leido el archivo.\n");
-    LlenandoMultiplicacionDeMatrices();
-    return 0;
-    
-}
-
-
-void LlenandoMultiplicacionDeMatrices(){
-    
-    for(int largo=0;largo<=58;largo++){
-        for(int ancho=58;ancho<=58;ancho++){
-            Peliculas.MultiploDeMatrices[ancho][largo]=0;
-        }
-    }
-    for (int largoMult=0; largoMult<=58; largoMult++){
-        for (int largo=0; largo<=58; largo++){
-            for (int ancho=0; ancho<=5; ancho++){
-                Peliculas.MultiploDeMatrices[largoMult][largo] +=Peliculas.Matriz[ancho][largoMult]*Peliculas.MatrizInversa[largo][ancho];
-            }
-            printf("%d ", Peliculas.MultiploDeMatrices[largoMult][largo]);
+    for (int a = 0; a <= 58; a++) {
+        for (int b = 0; b <= 5; b++) {
+            printf("%i\t", Peliculas.Matriz[b][a]);
         }
         printf("\n");
     }
-    
+    fclose(Datos);
+    return 0;
+}
+
+void LlenandoInversa() {
+    for (int a = 0; a <= 58; a++) {
+        for (int b = 0; b <= 5; b++) {
+            Peliculas.MatrizInversa[a][b]=Peliculas.Matriz[b][a];
+        }
+        printf("\n");
+    }
 }
