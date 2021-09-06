@@ -72,8 +72,24 @@ int main(int argc, char** argv) {
 void LlenandoInversa() {
     for (int a = 0; a <= 58; a++) {
         for (int b = 0; b <= 5; b++) {
-            Peliculas.MatrizInversa[a][b]=Peliculas.Matriz[b][a];
+            Peliculas.MatrizInversa[a][b] = Peliculas.Matriz[b][a];
+        }
+    }
+    for (int b = 0; b <= 5; b++) {
+        for (int a = 0; a <= 58; a++) {
+            printf("%i  ", Peliculas.Matriz[b][a]);
         }
         printf("\n");
     }
+}
+
+void MultiplicandoMatriz() {
+    for (int largoMult = 0; largoMult <= 58; largoMult++) {
+        for (int largo = 0; largo <= 58; largo++) {
+            for (int ancho = 0; ancho <= 5; ancho++) {
+                Peliculas.MultiploDeMatrices[largoMult][largo] += Peliculas.Matriz[ancho][largoMult] * Peliculas.MatrizInversa[largo][ancho];
+            }
+        }
+    }
+
 }
