@@ -1,12 +1,12 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 struct Pelicua {
-    int Matriz[5][58];
-    int MatrizInversa[58][5];
-    int MultiploDeMatrices[58][58];
+    /*arreglando matriz*/
+    int Matriz[6][59];
+    int MatrizInversa[59][6];
+    int MultiploDeMatrices[59][59];
 } Peliculas;
 
 int main(int argc, char** argv) {
@@ -18,15 +18,15 @@ int main(int argc, char** argv) {
         return 1;
 
     }
-    for (int largo = 0; largo <= 58; largo++) {
-        for (int ancho = 0; ancho <= 5; ancho++) {
+    for (int largo = 0; largo < 59; largo++) {
+        for (int ancho = 0; ancho < 6; ancho++) {
             Peliculas.MatrizInversa[largo][ancho] = 0;
             Peliculas.Matriz[ancho][largo] = 0;
         }
     }
-    for (int largo = 0; largo <= 58; largo++) {
-        for (int ancho = 0; ancho <= 58; ancho++) {
-            Peliculas.MultiploDeMatrices[largo][ancho]=0;
+    for (int largo = 0; largo < 59; largo++) {
+        for (int ancho = 0; ancho < 59; ancho++) {
+            Peliculas.MultiploDeMatrices[largo][ancho] = 0;
         }
     }
     int coma = 0, largo = 0, ancho = 0, aux;
@@ -64,37 +64,49 @@ int main(int argc, char** argv) {
             ancho = 0;
         }
     }
-    for (int a = 0; a <= 58; a++) {
-        for (int b = 0; b <= 5; b++) {
+    for (int a = 0; a < 59; a++) {
+        for (int b = 0; b < 6; b++) {
             printf("%i\t", Peliculas.Matriz[b][a]);
         }
         printf("\n");
     }
+    printf("\n\n");
+    LlenandoInversa();
+    printf("\n\n");
+    MultiplicandoMatriz();
     fclose(Datos);
     return 0;
 }
 
 void LlenandoInversa() {
-    for (int a = 0; a <= 58; a++) {
-        for (int b = 0; b <= 5; b++) {
+    for (int a = 0; a < 59; a++) {
+        for (int b = 0; b < 6; b++) {
             Peliculas.MatrizInversa[a][b] = Peliculas.Matriz[b][a];
         }
     }
-    for (int b = 0; b <= 5; b++) {
-        for (int a = 0; a <= 58; a++) {
-            printf("%i  ", Peliculas.Matriz[b][a]);
+    for (int b = 0; b < 6; b++) {
+        for (int a = 0; a < 59; a++) {
+            printf("%i ", Peliculas.Matriz[b][a]);
+
         }
         printf("\n");
     }
 }
 
 void MultiplicandoMatriz() {
-    for (int largoMult = 0; largoMult <= 58; largoMult++) {
-        for (int largo = 0; largo <= 58; largo++) {
-            for (int ancho = 0; ancho <= 5; ancho++) {
-                Peliculas.MultiploDeMatrices[largoMult][largo] += Peliculas.Matriz[ancho][largoMult] * Peliculas.MatrizInversa[largo][ancho];
+    for (int largoMult = 0; largoMult <59; largoMult++) {
+        for (int largo = 0; largo < 59; largo++) {
+            for (int ancho = 0; ancho <6; ancho++) {
+                Peliculas.MultiploDeMatrices[largoMult][largo] += Peliculas.Matriz[largoMult][ancho] * Peliculas.MatrizInversa[ancho][largo];
             }
         }
     }
 
+
+    for (int b = 0; b < 59; b++) {
+        for (int a = 0; a < 59; a++) {
+            printf("%i ", Peliculas.MultiploDeMatrices[b][a]);
+        }
+        printf("\n");
+    }
 }
