@@ -10,6 +10,7 @@ struct Pelicua {
 } Peliculas;
 
 int main(int argc, char** argv) {
+    const char* integrantes("pc19089");
     // Creamos un obejto para poder abrir archivo de texto
     FILE *Datos = fopen("peliculasFavoritasESD135_2021.csv", "r");
     //Validamos ejecucion de lectura de archivo.
@@ -40,7 +41,7 @@ int main(int argc, char** argv) {
             while (token != NULL) {
                 if (ancho == 0) {
                     token = strtok(NULL, ",");
-                } else if (ancho > 0) {
+                    } else if (ancho > 0) {
                     aux = strtol(token, NULL, 10);
                     if (aux != 0) {
                         Peliculas.Matriz[ancho - 1][largo] = aux;
@@ -97,7 +98,7 @@ void MultiplicandoMatriz() {
     for (int largoMult = 0; largoMult <59; largoMult++) {
         for (int largo = 0; largo < 59; largo++) {
             for (int ancho = 0; ancho <6; ancho++) {
-                Peliculas.MultiploDeMatrices[largoMult][largo] += Peliculas.Matriz[largoMult][ancho] * Peliculas.MatrizInversa[ancho][largo];
+                Peliculas.MultiploDeMatrices[largoMult][largo] += Peliculas.Matriz[ancho][largoMult] * Peliculas.MatrizInversa[largo][ancho];
             }
         }
     }
