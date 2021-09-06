@@ -10,7 +10,7 @@ struct Pelicua {
 } Peliculas;
 
 int main(int argc, char** argv) {
-    const char* integrantes("pc19089");
+    Integrantes();
     // Creamos un obejto para poder abrir archivo de texto
     FILE *Datos = fopen("peliculasFavoritasESD135_2021.csv", "r");
     //Validamos ejecucion de lectura de archivo.
@@ -18,16 +18,16 @@ int main(int argc, char** argv) {
         perror("Error al abrir archivo.");
         return 1;
 
-    }
-    for (int largo = 0; largo < 59; largo++) {
-        for (int ancho = 0; ancho < 6; ancho++) {
-            Peliculas.MatrizInversa[largo][ancho] = 0;
-            Peliculas.Matriz[ancho][largo] = 0;
+        for (int largo = 0; largo < 59; largo++) {
+            for (int ancho = 0; ancho < 6; ancho++) {
+                Peliculas.MatrizInversa[largo][ancho] = 0;
+                Peliculas.Matriz[ancho][largo] = 0;
+            }
         }
-    }
-    for (int largo = 0; largo < 59; largo++) {
-        for (int ancho = 0; ancho < 59; ancho++) {
-            Peliculas.MultiploDeMatrices[largo][ancho] = 0;
+        for (int largo = 0; largo < 59; largo++) {
+            for (int ancho = 0; ancho < 59; ancho++) {
+                Peliculas.MultiploDeMatrices[largo][ancho] = 0;
+            }
         }
     }
     int coma = 0, largo = 0, ancho = 0, aux;
@@ -41,13 +41,12 @@ int main(int argc, char** argv) {
             while (token != NULL) {
                 if (ancho == 0) {
                     token = strtok(NULL, ",");
-                    } else if (ancho > 0) {
+                } else if (ancho > 0) {
                     aux = strtol(token, NULL, 10);
                     if (aux != 0) {
                         Peliculas.Matriz[ancho - 1][largo] = aux;
                     } else {
                         Peliculas.Matriz[ancho - 1][largo] = 0;
-                        Peliculas.MatrizInversa[largo][ancho - 1] = 0;
                     }
                     token = strtok(NULL, ",");
                 }
@@ -95,9 +94,9 @@ void LlenandoInversa() {
 }
 
 void MultiplicandoMatriz() {
-    for (int largoMult = 0; largoMult <59; largoMult++) {
+    for (int largoMult = 0; largoMult < 59; largoMult++) {
         for (int largo = 0; largo < 59; largo++) {
-            for (int ancho = 0; ancho <6; ancho++) {
+            for (int ancho = 0; ancho < 6; ancho++) {
                 Peliculas.MultiploDeMatrices[largoMult][largo] += Peliculas.Matriz[ancho][largoMult] * Peliculas.MatrizInversa[largo][ancho];
             }
         }
@@ -110,4 +109,10 @@ void MultiplicandoMatriz() {
         }
         printf("\n");
     }
+}
+
+void Integrantes() {
+    const char *Carnet1 = "GR12043";
+    const char *Carnet2 = "PC19060";
+    printf("Estudiantes: %s       %s\n", Carnet1, Carnet2);
 }
