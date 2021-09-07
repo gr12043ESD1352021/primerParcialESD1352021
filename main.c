@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-struct Pelicua {
+struct Pelicula {
     /*arreglando matriz*/
     int Matriz[6][59];
     int MatrizInversa[59][6];
@@ -13,30 +13,27 @@ int main(int argc, char** argv) {
     Integrantes();
     // Creamos un obejto para poder abrir archivo de texto
     FILE *Datos = fopen("peliculasFavoritasESD135_2021.csv", "r");
+    
     //Validamos ejecucion de lectura de archivo.
     if (Datos == NULL) {
         perror("Error al abrir archivo.");
         return 1;
-
-        for (int largo = 0; largo < 59; largo++) {
-            for (int ancho = 0; ancho < 6; ancho++) {
-                Peliculas.MatrizInversa[largo][ancho] = 0;
-                Peliculas.Matriz[ancho][largo] = 0;
-            }
-        }
-        for (int largo = 0; largo < 59; largo++) {
-            for (int ancho = 0; ancho < 59; ancho++) {
-                Peliculas.MultiploDeMatrices[largo][ancho] = 0;
-            }
-        }
     }
+    LlenandoMatriz(*Datos);
+    LlenandoInversa();
+    printf("\n\n");
+    MultiplicandoMatriz();
+    fclose(Datos);
+    return 0;
+}
+
+void LlenandoMatriz(FILE *Datos){
+
     int coma = 0, largo = 0, ancho = 0, aux;
     char caracter[60];
     char *token;
     while (fgets(caracter, sizeof (caracter), Datos)) {
-
         token = strtok(caracter, ",");
-
         if (coma > 1) {
             while (token != NULL) {
                 if (ancho == 0) {
@@ -52,13 +49,10 @@ int main(int argc, char** argv) {
                 }
                 ancho++;
             }
-
         } else if (coma <= 1) {
             token = strtok(NULL, ",");
         }
-
         coma++;
-
         if (coma > 1 && ancho >= 6) {
             largo++;
             ancho = 0;
@@ -71,11 +65,6 @@ int main(int argc, char** argv) {
         printf("\n");
     }
     printf("\n\n");
-    LlenandoInversa();
-    printf("\n\n");
-    MultiplicandoMatriz();
-    fclose(Datos);
-    return 0;
 }
 
 void LlenandoInversa() {
@@ -101,11 +90,10 @@ void MultiplicandoMatriz() {
             }
         }
     }
-
-
     for (int b = 0; b < 59; b++) {
         for (int a = 0; a < 59; a++) {
-            printf("%i ", Peliculas.MultiploDeMatrices[b][a]);
+            if(a==b){printf("nul ");}
+            else{printf("%i  ", Peliculas.MultiploDeMatrices[b][a]);}
         }
         printf("\n");
     }
