@@ -92,7 +92,7 @@ void MultiplicandoMatriz() {
     }
     for (int b = 0; b < 59; b++) {
         for (int a = 0; a < 59; a++) {
-            if(a==b){printf("nul ");}
+            if(a==b){printf("n  ");}
             else{printf("%i  ", Peliculas.MultiploDeMatrices[b][a]);}
         }
         printf("\n");
