@@ -17,7 +17,6 @@ int main(int argc, char** argv) {
     }
     LlenandoMatriz(*Datos);
     LlenandoInversa();
-    printf("\n\n");
     Integrantes();
     fclose(Datos);
     return 0;
@@ -55,13 +54,6 @@ void LlenandoMatriz(FILE *Datos) {
             ancho = 0;
         }
     }
-    for (int a = 0; a < 59; a++) {
-        for (int b = 0; b < 6; b++) {
-            printf("%i\t", Peliculas.Matriz[b][a]);
-        }
-        printf("\n");
-    }
-    printf("\n\n");
     free(token);
 }
 
@@ -70,14 +62,12 @@ void LlenandoInversa() {
     int **MatrizInversa;
     MatrizInversa = (int**) malloc(58 * sizeof (int*));
     if (MatrizInversa == NULL) {
-        printf("Error al reservar meroria.");
         return 1;
     }
     for (int largo = 0; largo < 59; largo++) {
         for (int ancho = 0; ancho < 6; ancho++) {
             MatrizInversa[largo] = (int*) malloc(ancho * sizeof (int));
             if (MatrizInversa[largo] == NULL) {
-                printf("Error al reservar meroria.");
                 return 1;
             }
         }
@@ -87,13 +77,7 @@ void LlenandoInversa() {
             MatrizInversa[a][b] = Peliculas.Matriz[b][a];
         }
     }
-    for (int b = 0; b < 6; b++) {
-        for (int a = 0; a < 59; a++) {
-            printf("%i ", Peliculas.Matriz[b][a]);
-        }
-        printf("\n");
-    }
-    printf("\n\n");
+
     MultiplicandoMatriz(MatrizInversa);
     //Liberamos memoria de puntero.
     for (int b = 0; b < 59; b++) {
@@ -108,7 +92,6 @@ void MultiplicandoMatriz(int **MatrizInversa) {
     int **MultiploDeMatrices;
     MultiploDeMatrices = (int**) malloc(58 * sizeof (int*));
     if (MultiploDeMatrices == NULL) {
-        printf("Error al reservar meroria.");
         return 1;
     }
     for (int largo = 0; largo < 59; largo++) {
@@ -116,7 +99,6 @@ void MultiplicandoMatriz(int **MatrizInversa) {
         for (int ancho = 0; ancho < 59; ancho++) {
             MultiploDeMatrices[largo] = (int*) malloc(ancho * sizeof (int));
             if (MultiploDeMatrices[largo] == NULL) {
-                printf("Error al reservar meroria.");
                 return 1;
             }
         }
@@ -127,16 +109,6 @@ void MultiplicandoMatriz(int **MatrizInversa) {
                 MultiploDeMatrices[largoMult][largo] += Peliculas.Matriz[ancho][largoMult] * MatrizInversa[largo][ancho];
             }
         }
-    }
-    for (int b = 0; b < 59; b++) {
-        for (int a = 0; a < 59; a++) {
-            if (a == b) {
-                printf("NL ");
-            } else {
-                printf("%i  ", MultiploDeMatrices[b][a]);
-            }
-        }
-        printf("\n");
     }
     //Liberamos memoria de los punteros.
     for (int b = 0; b < 59; b++) {
@@ -149,12 +121,10 @@ void MultiplicandoMatriz(int **MatrizInversa) {
             free(MultiploDeMatrices[a][b]);
         }
     }
-    printf("\n");
 }
 
 //Metodo con el carnet de los estudiantes
 void Integrantes() {
     const char *Carnet1 = "GR12043";
     const char *Carnet2 = "PC19060";
-    printf("Estudiantes: %s       %s\n", Carnet1, Carnet2);
 }
