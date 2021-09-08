@@ -8,7 +8,6 @@ struct Pelicula {
 } Peliculas;
 
 int main(int argc, char** argv) {
-    Integrantes();
     // Creamos un obejto para poder abrir archivo de texto.
     FILE *Datos = fopen("peliculasFavoritasESD135_2021.csv", "r");
     //Validamos ejecucion de lectura de archivo.
@@ -19,10 +18,12 @@ int main(int argc, char** argv) {
     LlenandoMatriz(*Datos);
     LlenandoInversa();
     printf("\n\n");
+    Integrantes();
     fclose(Datos);
     return 0;
 }
 
+//Llena de datos a la matriz original.
 void LlenandoMatriz(FILE *Datos) {
     //Iniciamos a llenar matriz con los datos del CSV.
     int coma = 0, largo = 0, ancho = 0, aux;
@@ -64,6 +65,7 @@ void LlenandoMatriz(FILE *Datos) {
     free(token);
 }
 
+//Construye la matriz inversa a partir de la original.
 void LlenandoInversa() {
     int **MatrizInversa;
     MatrizInversa = (int**) malloc(58 * sizeof (int*));
@@ -101,6 +103,7 @@ void LlenandoInversa() {
     }
 }
 
+//Metodo que multiplica la matriz inversa con la original.
 void MultiplicandoMatriz(int **MatrizInversa) {
     int **MultiploDeMatrices;
     MultiploDeMatrices = (int**) malloc(58 * sizeof (int*));
@@ -146,8 +149,10 @@ void MultiplicandoMatriz(int **MatrizInversa) {
             free(MultiploDeMatrices[a][b]);
         }
     }
+    printf("\n");
 }
 
+//Metodo con el carnet de los estudiantes
 void Integrantes() {
     const char *Carnet1 = "GR12043";
     const char *Carnet2 = "PC19060";
